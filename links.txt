@@ -1,0 +1,7 @@
+https://github.com/starokurov/otus-cpp
+https://habr.com/ru/post/330902/
+https://code.visualstudio.com/docs/languages/cpp
+https://www.youtube.com/watch?v=LZwEtbc9gEA
+https://cakeinpanic.medium.com/github-actions-%D0%B1%D0%B0%D0%B7%D0%B0-2501445e7392
+https://docs.github.com/en/actions
+https://cmake.org/cmake-tutorial/
