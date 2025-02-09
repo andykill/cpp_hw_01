@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.10)
 
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
@@ -20,16 +20,10 @@ set_target_properties(helloworld_cli helloworld test_version PROPERTIES
 target_include_directories(helloworld
         PRIVATE "${CMAKE_BINARY_DIR}"
 )
-
-# Если библиотека найдена, то
-if (Boost_FOUND)
-    #    include_directories (SYSTEM ${Boost_INCLUDE_DIR}) # подключаем заголовочные файлы
-    #    add_executable (Boost_test "main.cpp") # Создаем исполняемый файл для нашего проекта
-    #    target_link_libraries (Boost_test ${Boost_LIBRARIES}) # подключаем библиотеку
-    set_target_properties(test_version PROPERTIES
-            COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-    )
-endif ()
+set_target_properties(test_version PROPERTIES
+        COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+        INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+)
 
 target_link_libraries(helloworld_cli PRIVATE
         helloworld
@@ -59,7 +53,8 @@ else ()
     target_compile_options(test_version PRIVATE
             -Wall -Wextra -pedantic -Werror
     )
-endif ()
+endif()
+
 
 
 install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
